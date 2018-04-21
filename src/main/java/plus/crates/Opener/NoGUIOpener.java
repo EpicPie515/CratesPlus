@@ -1,13 +1,15 @@
 package plus.crates.Opener;
 
+import java.io.IOException;
+import java.util.Random;
+
 import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
-import plus.crates.Crates.Crate;
-import plus.crates.CratesPlus;
 
-import java.io.IOException;
+import plus.crates.CratesPlus;
+import plus.crates.Crates.Crate;
 
 public class NoGUIOpener extends Opener {
     private boolean chestSound = true;
@@ -47,8 +49,10 @@ public class NoGUIOpener extends Opener {
             if (sound != null)
                 player.playSound(player.getLocation(), sound, (float) 0.5, 1);
         }
-        crate.handleWin(player);
-//		getWinning(crate).runWin(player);
+        for(int i = 0; i < new Random().nextInt(1)+2; i++) {
+            crate.handleWin(player);
+//    		getWinning(crate).runWin(player);
+        }
         finish(player);
     }
 
